@@ -4,16 +4,128 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <meta name="description" content="Shop Ranisaa Premium Dhoop Cones in six beautiful fragrances: Rose Royal, Jasmine Bliss, Mogra Bliss, Kewra Noor, Sandal Supreme and Oudh Mystic.">
+  <meta name="description" content="Shop Ranisaa Premium Dhoop Cones in six beautiful fragrances.">
 
   <title>Ranisaa | Premium Dhoop Cones</title>
 
   <link rel="stylesheet" href="style.css">
+
+  <style>
+    /* SHOP BUTTONS */
+
+    .buy-button {
+      display: inline-block;
+      width: 100%;
+      margin-top: 15px;
+      padding: 13px 18px;
+      border: none;
+      border-radius: 6px;
+      background: #b88720;
+      color: white;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .buy-button:hover {
+      background: #8f6814;
+    }
+
+    /* CART */
+
+    .cart-section {
+      max-width: 1100px;
+      margin: 60px auto;
+      padding: 35px 25px;
+      background: #f8f5ee;
+      border-radius: 10px;
+    }
+
+    .cart-section h2 {
+      margin-bottom: 25px;
+    }
+
+    #cart-items {
+      margin-bottom: 25px;
+    }
+
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+      padding: 15px 0;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .cart-item-name {
+      font-weight: 700;
+    }
+
+    .cart-controls {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .cart-controls button {
+      border: 1px solid #c8b99a;
+      background: white;
+      padding: 5px 10px;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+
+    .remove-button {
+      color: #9b1c1c;
+    }
+
+    .cart-total {
+      font-size: 22px;
+      font-weight: 700;
+      margin-top: 20px;
+    }
+
+    .checkout-button {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 14px 30px;
+      border: none;
+      border-radius: 6px;
+      background: #0b5d3b;
+      color: white;
+      font-size: 17px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .checkout-button:hover {
+      background: #08452d;
+    }
+
+    .cart-empty {
+      color: #666;
+    }
+
+    .cart-count {
+      display: inline-block;
+      min-width: 20px;
+      padding: 2px 6px;
+      border-radius: 20px;
+      background: #b88720;
+      color: white;
+      font-size: 12px;
+      text-align: center;
+      vertical-align: middle;
+    }
+  </style>
 </head>
 
 <body>
 
 <header class="site-header">
+
   <div class="nav-wrap">
 
     <a class="brand" href="#home">RANISAA</a>
@@ -23,11 +135,17 @@
       <a href="#dhoop">Dhoop Cones</a>
       <a href="#story">Our Story</a>
       <a href="#contact">Contact</a>
+      <a href="#cart">
+        Cart <span id="cart-count" class="cart-count">0</span>
+      </a>
     </nav>
 
-    <a class="nav-cta" href="#dhoop">Shop Collection</a>
+    <a class="nav-cta" href="#dhoop">
+      Shop Collection
+    </a>
 
   </div>
+
 </header>
 
 
@@ -37,9 +155,10 @@
 
 <section id="home" class="hero-banner-section">
 
-  <a class="hero-banner-link"
-     href="#dhoop"
-     aria-label="Explore Ranisaa Premium Dhoop Cones">
+  <a
+    class="hero-banner-link"
+    href="#dhoop"
+    aria-label="Shop Ranisaa Premium Dhoop Cones">
 
     <img
       class="hero-banner"
@@ -99,6 +218,12 @@
           $15.99 USD
         </strong>
 
+        <button
+          class="buy-button"
+          onclick="addToCart('Rose Royal', 15.99)">
+          Add to Cart
+        </button>
+
       </div>
 
     </article>
@@ -127,6 +252,12 @@
         <strong class="price">
           $15.99 USD
         </strong>
+
+        <button
+          class="buy-button"
+          onclick="addToCart('Jasmine Bliss', 15.99)">
+          Add to Cart
+        </button>
 
       </div>
 
@@ -157,6 +288,12 @@
           $15.99 USD
         </strong>
 
+        <button
+          class="buy-button"
+          onclick="addToCart('Mogra Bliss', 15.99)">
+          Add to Cart
+        </button>
+
       </div>
 
     </article>
@@ -185,6 +322,12 @@
         <strong class="price">
           $15.99 USD
         </strong>
+
+        <button
+          class="buy-button"
+          onclick="addToCart('Kewra Noor', 15.99)">
+          Add to Cart
+        </button>
 
       </div>
 
@@ -215,6 +358,12 @@
           $15.99 USD
         </strong>
 
+        <button
+          class="buy-button"
+          onclick="addToCart('Sandal Supreme', 15.99)">
+          Add to Cart
+        </button>
+
       </div>
 
     </article>
@@ -244,6 +393,12 @@
           $18.99 USD
         </strong>
 
+        <button
+          class="buy-button"
+          onclick="addToCart('Oudh Mystic', 18.99)">
+          Add to Cart
+        </button>
+
       </div>
 
     </article>
@@ -272,6 +427,37 @@
     <strong>Premium</strong>
     <span>Fragrance collection</span>
   </div>
+
+</section>
+
+
+<!-- CART -->
+
+<section id="cart" class="cart-section">
+
+  <p class="eyebrow">
+    YOUR RANISAA CART
+  </p>
+
+  <h2>
+    Shopping Cart
+  </h2>
+
+  <div id="cart-items">
+    <p class="cart-empty">
+      Your cart is empty.
+    </p>
+  </div>
+
+  <div class="cart-total">
+    Total: $<span id="cart-total">0.00</span> USD
+  </div>
+
+  <button
+    class="checkout-button"
+    onclick="checkout()">
+    Proceed to Checkout
+  </button>
 
 </section>
 
@@ -346,6 +532,179 @@
   </div>
 
 </footer>
+
+
+<script>
+
+let cart = [];
+
+
+function addToCart(name, price) {
+
+  const existing = cart.find(item => item.name === name);
+
+  if (existing) {
+
+    existing.quantity += 1;
+
+  } else {
+
+    cart.push({
+      name: name,
+      price: price,
+      quantity: 1
+    });
+
+  }
+
+  updateCart();
+
+  document.getElementById("cart").scrollIntoView({
+    behavior: "smooth"
+  });
+
+}
+
+
+function changeQuantity(index, amount) {
+
+  cart[index].quantity += amount;
+
+  if (cart[index].quantity <= 0) {
+
+    cart.splice(index, 1);
+
+  }
+
+  updateCart();
+
+}
+
+
+function removeItem(index) {
+
+  cart.splice(index, 1);
+
+  updateCart();
+
+}
+
+
+function updateCart() {
+
+  const cartItems = document.getElementById("cart-items");
+
+  const cartCount = document.getElementById("cart-count");
+
+  const cartTotal = document.getElementById("cart-total");
+
+
+  if (cart.length === 0) {
+
+    cartItems.innerHTML =
+      '<p class="cart-empty">Your cart is empty.</p>';
+
+    cartCount.textContent = "0";
+
+    cartTotal.textContent = "0.00";
+
+    return;
+
+  }
+
+
+  let total = 0;
+
+  let quantityTotal = 0;
+
+  let html = "";
+
+
+  cart.forEach(function(item, index) {
+
+    const itemTotal = item.price * item.quantity;
+
+    total += itemTotal;
+
+    quantityTotal += item.quantity;
+
+
+    html += `
+
+      <div class="cart-item">
+
+        <div>
+
+          <div class="cart-item-name">
+            ${item.name}
+          </div>
+
+          <div>
+            $${item.price.toFixed(2)} USD
+          </div>
+
+        </div>
+
+
+        <div class="cart-controls">
+
+          <button onclick="changeQuantity(${index}, -1)">
+            −
+          </button>
+
+          <strong>
+            ${item.quantity}
+          </strong>
+
+          <button onclick="changeQuantity(${index}, 1)">
+            +
+          </button>
+
+          <button
+            class="remove-button"
+            onclick="removeItem(${index})">
+            Remove
+          </button>
+
+        </div>
+
+      </div>
+
+    `;
+
+  });
+
+
+  cartItems.innerHTML = html;
+
+  cartCount.textContent = quantityTotal;
+
+  cartTotal.textContent = total.toFixed(2);
+
+}
+
+
+function checkout() {
+
+  if (cart.length === 0) {
+
+    alert("Please add a product to your cart first.");
+
+    return;
+
+  }
+
+
+  alert(
+    "Your cart is ready. We will connect the secure USD payment checkout next."
+  );
+
+}
+
+
+updateCart();
+
+</script>
 
 
 </body>
