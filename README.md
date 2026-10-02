@@ -1,18 +1,2 @@
-# Ranisaa Dhoop Cones Website
-
-This package contains a GitHub Pages-ready Ranisaa website with six dhoop cone products.
-
-Products:
-- Rose Royal
-- Jasmine Bliss
-- Mogra Bliss
-- Kewra Noor
-- Sandal Supreme
-- Oudh Mystic
-
-Files:
-- index.html
-- style.css
-- images/
-
-Upload/replace these files in the `ranisaa-website` GitHub repository.
+Ranisaa website hero update.
+Upload/replace index.html and style.css, and upload images/ranisaa-hero-banner.png. Existing CNAME and other repository files should be left untouched.
